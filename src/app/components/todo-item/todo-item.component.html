@@ -1,1 +1,20 @@
-<p>todo-item works!</p>
+<div class="todo-item d-flex justify-content-between align-items-center" (mouseover)="isHovered = true"
+    (mouseout)="isHovered = false">
+    <div class="todo">
+        <input type="checkbox" [id]="todo.id" [class]="{checked: todo.isCompleted}" [checked]="todo.isCompleted"
+            class="text-center toggle" (change)="changeTodoStatus()">
+        <label [@fadeStrikeThrough]="todo.isCompleted ? 'completed' : 'active' "
+            [for]="todo.id">{{todo.content}}</label>
+    </div>
+    <div class="d-flex align-items-center">
+        <span class="icon-wrapper text-center edit" [hidden]="todo.isCompleted" [class]="{active: isHovered}">
+            <i class="eva eva-edit-outline" (click)="isEditing = true"></i>
+        </span>
+        <span class="icon-wrapper text-center" [class]="{active: isHovered}">
+            <i class="eva eva-close" (click)="removeTodo()"></i>
+        </span>
+    </div>
+    <form class="edit-form" (keyup)="submitEdit($event)" *ngIf="isEditing">
+        <input type="text" [(ngModel)]="todo.content" name="editTodo">
+    </form>
+</div>
