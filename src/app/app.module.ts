@@ -9,6 +9,7 @@ import { TodoInputComponent } from './components/todo-input/todo-input.component
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { TodoStore } from './stores/todo.store';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,10 @@ import { FormsModule } from '@angular/forms';
     TodoItemComponent,
     TodoInputComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, FormsModule, BrowserAnimationsModule],
+  providers: [TodoStore],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

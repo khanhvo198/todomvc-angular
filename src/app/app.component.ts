@@ -5,7 +5,7 @@ import { TodoService } from './services/todo.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'todo-mvc';
@@ -16,9 +16,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.todoService.fetchFromLocalStorage();
-    this.hasTodo$ = this.todoService.length$.pipe(map(length => length > 0 ))
+    this.hasTodo$ = this.todoService.length$.pipe(map(length => length > 0));
   }
-
-
-
 }
